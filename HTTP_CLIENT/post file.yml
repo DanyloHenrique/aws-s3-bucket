@@ -1,0 +1,22 @@
+info:
+  name: post file
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: http://localhost:3000/s3-aws
+  body:
+    type: multipart-form
+    data:
+      - name: file
+        type: file
+        value:
+          - /home/danylo/Downloads/1759410760008.jpg
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
