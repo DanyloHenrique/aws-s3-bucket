@@ -10,11 +10,11 @@ const MAX_SIZE_FILE_5MB = 5000000
 
 @Controller('s3-aws')
 export class S3AWSController {
-    constructor (
+    constructor(
         private readonly uploadS3Service: UploadS3Service,
         private readonly getSignedUrlS3Service: GetSignedUrlS3Service,
         private readonly deleteS3Service: DeleteS3Service
-    ){}
+    ) { }
 
 
     @Post()
@@ -23,18 +23,18 @@ export class S3AWSController {
         new ParseFilePipe({
             validators: [
                 new MaxFileSizeValidator({ maxSize: MAX_SIZE_FILE_5MB }),
-                new FileTypeValidator({ fileType: /^image\/(png|jpeg)$/ }),
-            ] 
+                new FileTypeValidator({ fileType: /^(image\/(png|jpeg)|application\/pdf)$/ })
+            ]
         })
     ) file: Express.Multer.File) {
 
-     console.log(file)
-     const uploadFileDTO = {
-        fileName: file.originalname,
-        file: file.buffer
-     }
-    const key = await this.uploadS3Service.upload(uploadFileDTO)
-    return {payload: key}
+        console.log(file)
+        const uploadFileDTO = {
+            fileName: file.originalname,
+            file: file.buffer
+        }
+        const key = await this.uploadS3Service.upload(uploadFileDTO)
+        return { payload: key }
     }
 
 
@@ -46,8 +46,8 @@ export class S3AWSController {
 
     @Delete()
     @HttpCode(204)
-    async deleteFile(@Query('key') key: string){
+    async deleteFile(@Query('key') key: string) {
         await this.deleteS3Service.delete(key)
     }
-    
+
 }
