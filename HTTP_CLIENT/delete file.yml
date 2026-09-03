@@ -5,10 +5,10 @@ info:
 
 http:
   method: DELETE
-  url: http://localhost:3000/upload-s3?key=apis3upload/e17cad93-033f-4b66-8f56-a0ec3a3e94b0.jpg
+  url: http://localhost:3000/s3-aws?key=apis3upload/c1605bda-6b4a-49ef-96cc-89fcc74017e2.pdf
   params:
     - name: key
-      value: apis3upload/e17cad93-033f-4b66-8f56-a0ec3a3e94b0.jpg
+      value: apis3upload/c1605bda-6b4a-49ef-96cc-89fcc74017e2.pdf
       type: query
   auth: inherit
 

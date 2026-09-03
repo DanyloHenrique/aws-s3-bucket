@@ -12,7 +12,7 @@ http:
       - name: file
         type: file
         value:
-          - /home/danylo/Downloads/1759410760008.jpg
+          - /home/danylo/Downloads/CV Danylo Henrique da Silva dos Santos.pdf
   auth: inherit
 
 settings:
